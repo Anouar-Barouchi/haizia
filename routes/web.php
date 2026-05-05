@@ -13,3 +13,7 @@ Route::get('/register', function () {
 Route::get('/test-route', function () {
     return "Code is updated: " . now();
 });
+
+Route::get('/login', function () {
+    return redirect()->route('filament.admin.auth.login');
+})->name('login');
