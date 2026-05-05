@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('email')->unique();
             $table->string('phone');
-            $table->string('birth_info');
+            $table->date('birth_date');
             $table->string('address');
             $table->string('membership'); // مؤسسة شبانية, جمعية, حر
             $table->string('membership_name')->nullable();

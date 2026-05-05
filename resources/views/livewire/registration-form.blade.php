@@ -47,8 +47,8 @@
                 </div>
 
                 <div class="mt-6 space-y-2">
-                    <label class="block text-sm font-bold text-slate-600">تاريخ ومكان الميلاد</label>
-                    <input type="text" wire:model="birth_info" required placeholder="مثال: 01/01/1990 - سطيف"
+                    <label class="block text-sm font-bold text-slate-600">تاريخ الميلاد</label>
+                    <input type="date" wire:model="birth_date" required
                            class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-stone-400 outline-none transition-all">
                 </div>
 

@@ -43,8 +43,8 @@ class CandidateResource extends Resource
                             ->label('رقم الهاتف')
                             ->tel()
                             ->required(),
-                        Forms\Components\TextInput::make('birth_info')
-                            ->label('تاريخ ومكان الميلاد')
+                        Forms\Components\DatePicker::make('birth_date')
+                            ->label('تاريخ الميلاد')
                             ->required(),
                         Forms\Components\TextInput::make('address')
                             ->label('العنوان')
@@ -127,9 +127,10 @@ class CandidateResource extends Resource
                     ->label('اللقب')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('phone')
-                    ->label('الهاتف')
-                    ->searchable(),
+                Tables\Columns\TextColumn::make('birth_date')
+                    ->label('تاريخ الميلاد')
+                    ->date()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('membership')
                     ->label('الانتساب')
                     ->badge()

@@ -14,7 +14,7 @@ class RegistrationForm extends Component
     public $last_name;
     public $email;
     public $phone;
-    public $birth_info;
+    public $birth_date;
     public $address;
     public $membership = 'حر';
     public $membership_name;
@@ -33,7 +33,7 @@ class RegistrationForm extends Component
         'last_name' => 'required|min:2',
         'email' => 'required|email|unique:candidates,email',
         'phone' => 'required',
-        'birth_info' => 'required',
+        'birth_date' => 'required|date',
         'address' => 'required',
         'membership' => 'required',
         'profile_pic' => 'required|image|max:2048',
@@ -58,7 +58,7 @@ class RegistrationForm extends Component
             'last_name' => $this->last_name,
             'email' => $this->email,
             'phone' => $this->phone,
-            'birth_info' => $this->birth_info,
+            'birth_date' => $this->birth_date,
             'address' => $this->address,
             'membership' => $this->membership,
             'membership_name' => ($this->membership !== 'حر') ? $this->membership_name : null,
@@ -72,7 +72,7 @@ class RegistrationForm extends Component
         ]);
 
         $this->successMessage = 'تم إرسال طلبك بنجاح! سنتواصل معك قريباً.';
-        $this->reset(['first_name', 'last_name', 'email', 'phone', 'birth_info', 'address', 'membership', 'membership_name', 'profile_pic', 'gallery', 'has_experience', 'experience_list', 'has_awards', 'awards_list', 'terms']);
+        $this->reset(['first_name', 'last_name', 'email', 'phone', 'birth_date', 'address', 'membership', 'membership_name', 'profile_pic', 'gallery', 'has_experience', 'experience_list', 'has_awards', 'awards_list', 'terms']);
     }
 
     public function render()

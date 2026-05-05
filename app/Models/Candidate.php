@@ -11,7 +11,7 @@ class Candidate extends Model
         'last_name',
         'email',
         'phone',
-        'birth_info',
+        'birth_date',
         'address',
         'membership',
         'membership_name',
