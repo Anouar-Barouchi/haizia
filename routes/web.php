@@ -9,3 +9,7 @@ Route::get('/', function () {
 Route::get('/register', function () {
     return view('register');
 })->name('register');
+
+Route::get('/test-route', function () {
+    return "Code is updated: " . now();
+});
