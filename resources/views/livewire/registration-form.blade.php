@@ -198,7 +198,7 @@
                 <div class="flex items-start gap-3 p-2">
                     <input type="checkbox" wire:model="terms" id="terms" required class="mt-1 w-5 h-5 text-[#8b6e4b] rounded focus:ring-[#8b6e4b] cursor-pointer">
                     <label for="terms" class="text-slate-700 font-medium select-none cursor-pointer">
-                        لقد قرأت <span class="text-[#8b6e4b] underline font-bold hover:text-stone-700" onclick="Livewire.dispatch('openModal')">شروط المسابقة</span> ووافقت عليها
+                        لقد قرأت <span class="text-[#8b6e4b] underline font-bold hover:text-stone-700" onclick="openModal()">شروط المسابقة</span> ووافقت عليها
                     </label>
                 </div>
                 @error('terms') <span class="text-red-500 text-xs">يجب الموافقة على الشروط للمتابعة</span> @enderror
@@ -209,4 +209,12 @@
             </div>
         </form>
     @endif
+
+    <script>
+        window.addEventListener('candidate-registered', event => {
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'CompleteRegistration');
+            }
+        });
+    </script>
 </div>

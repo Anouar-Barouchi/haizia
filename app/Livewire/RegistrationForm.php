@@ -72,6 +72,7 @@ class RegistrationForm extends Component
         ]);
 
         $this->successMessage = 'تم إرسال طلبك بنجاح! سنتواصل معك قريباً.';
+        $this->dispatch('candidate-registered');
         $this->reset(['first_name', 'last_name', 'email', 'phone', 'birth_date', 'address', 'membership', 'membership_name', 'profile_pic', 'gallery', 'has_experience', 'experience_list', 'has_awards', 'awards_list', 'terms']);
     }
 
