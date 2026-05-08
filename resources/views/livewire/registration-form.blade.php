@@ -211,9 +211,42 @@
     @endif
 
     <script>
+        let registrationFormStartedTracked = false;
+
+        document.addEventListener('focusin', event => {
+            if (registrationFormStartedTracked) {
+                return;
+            }
+
+            if (event.target.closest('form') && typeof window.trackMetaCustomEvent === 'function') {
+                window.trackMetaCustomEvent('RegistrationFormStarted', {
+                    form_name: 'contest_registration'
+                });
+                registrationFormStartedTracked = true;
+            }
+        });
+
         window.addEventListener('candidate-registered', event => {
-            if (typeof fbq !== 'undefined') {
-                fbq('track', 'CompleteRegistration');
+            if (typeof window.trackMetaEvent === 'function') {
+                window.trackMetaEvent('CompleteRegistration', {
+                    content_name: 'contest_registration',
+                    status: 'submitted'
+                });
+
+                window.trackMetaEvent('Lead', {
+                    content_name: 'contest_registration',
+                    membership_type: event.detail?.membership ?? 'unknown',
+                    has_experience: event.detail?.has_experience ?? false,
+                    has_awards: event.detail?.has_awards ?? false
+                });
+            }
+
+            if (typeof window.trackMetaCustomEvent === 'function') {
+                window.trackMetaCustomEvent('CandidateRegistrationSubmitted', {
+                    membership_type: event.detail?.membership ?? 'unknown',
+                    has_experience: event.detail?.has_experience ?? false,
+                    has_awards: event.detail?.has_awards ?? false
+                });
             }
         });
     </script>

@@ -24,6 +24,18 @@
     'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '{{ config('services.meta.pixel_id') }}');
     fbq('track', 'PageView');
+
+    window.trackMetaEvent = function (eventName, params = {}, options = {}) {
+        if (typeof fbq !== 'undefined') {
+            fbq('track', eventName, params, options);
+        }
+    };
+
+    window.trackMetaCustomEvent = function (eventName, params = {}, options = {}) {
+        if (typeof fbq !== 'undefined') {
+            fbq('trackCustom', eventName, params, options);
+        }
+    };
     </script>
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id={{ config('services.meta.pixel_id') }}&ev=PageView&noscript=1"
