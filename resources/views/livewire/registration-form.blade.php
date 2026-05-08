@@ -1,11 +1,11 @@
 <div class="glass-card max-w-2xl w-full rounded-2xl shadow-2xl overflow-hidden border-t-8 border-[#8b6e4b] bg-white">
-    
+
     <!-- Header -->
     <div class="p-8 text-center bg-white/50">
-        <img src="{{ asset('logo-original.png') }}" class="h-32 mx-auto mb-4 drop-shadow-md" alt="Logo">
+        <img src="{{ asset('logo-original1.png') }}" class="h-32 mx-auto mb-4 drop-shadow-md" alt="Logo">
         <h1 class="text-3xl font-extrabold text-[#8b6e4b] mb-2">استمارة التسجيل في المسابقة</h1>
         <p class="text-slate-600 font-bold">21 - 22 - 23 ماي 2026</p>
-        
+
         <!-- Setif Only Notice -->
         <div class="mt-4 bg-amber-50 border-r-4 border-amber-500 p-4 rounded-lg flex items-center gap-3 text-right">
             <span class="text-amber-600 text-xl font-bold">⚠️</span>
@@ -24,17 +24,17 @@
         </div>
     @else
         <form wire:submit.prevent="submit" class="p-8 space-y-8 text-right" dir="rtl">
-            
+
             <!-- Section: Personal Info -->
             <div>
                 <div class="flex items-center gap-3 mb-6 bg-stone-50 p-2 rounded-lg border-r-4 border-[#8b6e4b]">
                     <h2 class="text-xl font-bold text-slate-800">المعلومات الشخصية</h2>
                 </div>
-                
+
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div class="space-y-2">
                         <label class="block text-sm font-bold text-slate-600">الاسم</label>
-                        <input type="text" wire:model="first_name" required placeholder="اسمه الشخصي" 
+                        <input type="text" wire:model="first_name" required placeholder="اسمه الشخصي"
                                class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-stone-400 outline-none transition-all @error('first_name') border-red-500 @enderror">
                         @error('first_name') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                     </div>
@@ -80,7 +80,7 @@
                 </div>
                 <div class="border-2 border-dashed border-slate-300 rounded-2xl p-8 text-center bg-slate-50 hover:bg-slate-100 transition-colors cursor-pointer group relative" onclick="document.getElementById('profile_pic').click()">
                     <input type="file" id="profile_pic" wire:model="profile_pic" accept="image/*" class="hidden">
-                    
+
                     @if($profile_pic)
                         <img src="{{ $profile_pic->temporaryUrl() }}" class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-[#8b6e4b] shadow-lg mb-4">
                     @else
@@ -90,7 +90,7 @@
                             <p class="text-xs text-slate-400">ستستخدم في التعريف بالمتسابقين</p>
                         </div>
                     @endif
-                    
+
                     <div wire:loading wire:target="profile_pic" class="text-sm text-stone-500 mt-2">جاري التحميل...</div>
                 </div>
                 @error('profile_pic') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
@@ -107,7 +107,7 @@
                         </label>
                     @endforeach
                 </div>
-                
+
                 @if($membership !== 'حر')
                     <div class="animate-fade-in mt-4">
                         <label class="block text-sm font-bold text-slate-600 mb-2">
@@ -176,7 +176,7 @@
                     </div>
                     <div wire:loading wire:target="gallery" class="text-sm text-stone-500 mt-2">جاري التحميل...</div>
                 </div>
-                
+
                 @if($gallery)
                     <div class="grid grid-cols-3 gap-4 mt-6">
                         @foreach($gallery as $photo)

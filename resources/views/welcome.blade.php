@@ -11,8 +11,8 @@
 </style>
 
 <div class="space-y-8 animate-in fade-in duration-1000 text-center">
-    <img src="{{ asset('logo-original.png') }}" class="h-48 mx-auto drop-shadow-[0_0_20px_rgba(197,160,89,0.5)]" alt="Logo">
-    
+    <img src="{{ asset('logo-original1.png') }}" class="h-48 mx-auto drop-shadow-[0_0_20px_rgba(197,160,89,0.5)]" alt="Logo">
+
     <h1 class="text-5xl font-black mb-4">مسابقة حيزية للصورة الفوتوغرافية</h1>
     <p class="text-2xl gold-text font-bold">قريباً جداً...</p>
 
@@ -35,7 +35,7 @@
             <span class="text-[10px] uppercase text-slate-400 font-bold">ثانية</span>
         </div>
     </div>
-    
+
     <div class="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/20 inline-block text-white">
         <p class="text-xl mb-4">موعد الحدث:</p>
         <p class="text-4xl font-black gold-text">21 - 22 - 23 ماي 2026</p>
