@@ -36,9 +36,9 @@ class RegistrationForm extends Component
         'birth_date' => 'required|date',
         'address' => 'required',
         'membership' => 'required',
-        'profile_pic' => 'required|image|max:2048',
+        'profile_pic' => 'required|image|max:20480',
         'gallery' => 'nullable|array|max:3',
-        'gallery.*' => 'image|max:2048',
+        'gallery.*' => 'image|max:20480',
         'terms' => 'accepted',
     ];
 
