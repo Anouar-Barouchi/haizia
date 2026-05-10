@@ -177,6 +177,7 @@ class CandidateResource extends Resource
                     ->action(fn (Candidate $record) => $record->update(['status' => 'rejected']))
                     ->visible(fn (Candidate $record) => $record->status !== 'rejected'),
                 Tables\Actions\EditAction::make(),
+                ViewAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -198,6 +199,7 @@ class CandidateResource extends Resource
             'index' => Pages\ListCandidates::route('/'),
             'create' => Pages\CreateCandidate::route('/create'),
             'edit' => Pages\EditCandidate::route('/{record}/edit'),
+            'view' => Pages\ViewCandidate::route('/{record}/view'),
         ];
     }
 
