@@ -200,4 +200,14 @@ class CandidateResource extends Resource
             'edit' => Pages\EditCandidate::route('/{record}/edit'),
         ];
     }
+
+    public static function canEdit(Candidate $record): bool
+    {
+        return false;
+    }
+
+    public static function canDelete(Candidate $record): bool
+    {
+        return false;
+    }
 }
