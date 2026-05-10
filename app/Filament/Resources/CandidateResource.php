@@ -201,12 +201,12 @@ class CandidateResource extends Resource
         ];
     }
 
-    public static function canEdit(Candidate $record): bool
+    public static function canEdit($record): bool
     {
         return false;
     }
 
-    public static function canDelete(Candidate $record): bool
+    public static function canDelete($record): bool
     {
         return false;
     }
