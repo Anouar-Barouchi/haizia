@@ -6,7 +6,7 @@ use App\Filament\Resources\CandidateResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ViewRecord;
 
-class ViewCondidate extends ViewRecord
+class ViewCandidate extends ViewRecord
 {
     protected static string $resource = CandidateResource::class;
 
@@ -16,4 +16,5 @@ class ViewCondidate extends ViewRecord
             Actions\EditAction::make(),
         ];
     }
+    
 }
