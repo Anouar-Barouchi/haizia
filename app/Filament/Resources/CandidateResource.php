@@ -177,7 +177,7 @@ class CandidateResource extends Resource
                     ->action(fn (Candidate $record) => $record->update(['status' => 'rejected']))
                     ->visible(fn (Candidate $record) => $record->status !== 'rejected'),
                 Tables\Actions\EditAction::make(),
-                ViewAction::make(),
+                Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
