@@ -22,7 +22,17 @@ class Candidate extends Model
         'has_awards',
         'awards_list',
         'status',
+        'code',
     ];
+
+    protected static function booted()
+    {
+        static::creating(function ($candidate) {
+            if (empty($candidate->code)) {
+                $candidate->code = \Illuminate\Support\Str::uuid()->toString();
+            }
+        });
+    }
 
     protected $casts = [
         'gallery' => 'array',

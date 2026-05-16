@@ -100,7 +100,7 @@
             
             <div class="qr-section">
                 <p>يرجى إبراز هذا الرمز عند نقطة الاستقبال</p>
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data={{ urlencode('candidate-' . $candidate->id) }}" alt="QR Code" class="qr-code">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data={{ urlencode(route('candidates.checkin', ['code' => $candidate->code])) }}" alt="QR Code" class="qr-code">
             </div>
         </div>
         <div class="footer">

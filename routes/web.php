@@ -17,3 +17,8 @@ Route::get('/test-route', function () {
 Route::get('/login', function () {
     return redirect()->route('filament.admin.auth.login');
 })->name('login');
+
+Route::get('/checkin/{code}', function ($code) {
+    $candidate = \App\Models\Candidate::where('code', $code)->firstOrFail();
+    return redirect(\App\Filament\Resources\CandidateResource::getUrl('view', ['record' => $candidate]));
+})->name('candidates.checkin');
