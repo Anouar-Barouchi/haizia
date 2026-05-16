@@ -103,6 +103,7 @@ class CandidateResource extends Resource
                             ->options([
                                 'pending' => 'قيد الانتظار',
                                 'accepted' => 'مقبول',
+                                'final_accepted' => 'قبول نهائي',
                                 'rejected' => 'مرفوض',
                                 'waitlist' => 'قائمة الانتظار',
                             ])
@@ -145,8 +146,10 @@ class CandidateResource extends Resource
                     ->color(fn (string $state): string => match ($state) {
                         'pending' => 'warning',
                         'accepted' => 'success',
+                        'final_accepted' => 'success',
                         'rejected' => 'danger',
                         'waitlist' => 'info',
+                        default => 'gray',
                     }),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('تاريخ التسجيل')
@@ -160,7 +163,9 @@ class CandidateResource extends Resource
                     ->options([
                         'pending' => 'قيد الانتظار',
                         'accepted' => 'مقبول',
+                        'final_accepted' => 'قبول نهائي',
                         'rejected' => 'مرفوض',
+                        'waitlist' => 'قائمة الانتظار',
                     ]),
             ])
             ->actions([
@@ -170,6 +175,12 @@ class CandidateResource extends Resource
                     ->color('success')
                     ->action(fn (Candidate $record) => $record->update(['status' => 'accepted']))
                     ->visible(fn (Candidate $record) => $record->status !== 'accepted'),
+                Tables\Actions\Action::make('final_accept')
+                    ->label('قبول نهائي')
+                    ->icon('heroicon-o-star')
+                    ->color('success')
+                    ->action(fn (Candidate $record) => $record->update(['status' => 'final_accepted']))
+                    ->visible(fn (Candidate $record) => $record->status !== 'final_accepted'),
                 Tables\Actions\Action::make('reject')
                     ->label('رفض')
                     ->icon('heroicon-o-x-circle')
