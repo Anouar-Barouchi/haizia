@@ -181,6 +181,21 @@ class CandidateResource extends Resource
                     ->color('success')
                     ->action(fn (Candidate $record) => $record->update(['status' => 'final_accepted']))
                     ->visible(fn (Candidate $record) => $record->status !== 'final_accepted'),
+                Tables\Actions\Action::make('send_invitation')
+                    ->label('إرسال الدعوة')
+                    ->icon('heroicon-o-envelope')
+                    ->color('info')
+                    ->action(function (Candidate $record) {
+                        \Illuminate\Support\Facades\Mail::to($record->email)->send(new \App\Mail\CandidateInvitationMail($record));
+                        \Filament\Notifications\Notification::make()
+                            ->title('تم إرسال الدعوة بنجاح')
+                            ->success()
+                            ->send();
+                    })
+                    ->visible(fn (Candidate $record) => in_array($record->status, ['accepted', 'final_accepted']))
+                    ->requiresConfirmation()
+                    ->modalHeading('إرسال دعوة للمترشح')
+                    ->modalDescription('هل أنت متأكد أنك تريد إرسال بريد إلكتروني يحتوي على دعوة الحضور و QR Code لهذا المترشح؟'),
                 Tables\Actions\Action::make('reject')
                     ->label('رفض')
                     ->icon('heroicon-o-x-circle')
@@ -193,6 +208,27 @@ class CandidateResource extends Resource
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\BulkAction::make('send_invitations')
+                        ->label('إرسال الدعوات')
+                        ->icon('heroicon-o-envelope')
+                        ->color('info')
+                        ->action(function (\Illuminate\Database\Eloquent\Collection $records) {
+                            $count = 0;
+                            foreach ($records as $record) {
+                                if (in_array($record->status, ['accepted', 'final_accepted'])) {
+                                    \Illuminate\Support\Facades\Mail::to($record->email)->send(new \App\Mail\CandidateInvitationMail($record));
+                                    $count++;
+                                }
+                            }
+                            \Filament\Notifications\Notification::make()
+                                ->title("تم إرسال {$count} دعوة بنجاح")
+                                ->success()
+                                ->send();
+                        })
+                        ->requiresConfirmation()
+                        ->deselectRecordsAfterCompletion()
+                        ->modalHeading('إرسال دعوات للمترشحين المحددين')
+                        ->modalDescription('هل أنت متأكد أنك تريد إرسال الدعوات؟ (سيتم الإرسال فقط للمقبولين)'),
                 ]),
             ]);
     }
