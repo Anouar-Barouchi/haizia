@@ -97,16 +97,13 @@ class CandidatePortalController extends Controller
             'camera_brand' => 'required|string',
             'camera_model' => 'required|string',
             'camera_lenses' => 'nullable|string',
-            'photos' => 'required|array|min:1',
-            'photos.*' => 'image|max:10240', // 10MB max per photo
+            'photo' => 'required|image|max:10240', // 10MB max
         ]);
 
         $photoPaths = [];
-        if ($request->hasFile('photos')) {
-            foreach ($request->file('photos') as $photo) {
-                $path = $photo->store('competition_submissions', 'public');
-                $photoPaths[] = $path;
-            }
+        if ($request->hasFile('photo')) {
+            $path = $request->file('photo')->store('competition_submissions', 'public');
+            $photoPaths[] = $path;
         }
 
         $candidate->update([
@@ -118,6 +115,6 @@ class CandidatePortalController extends Controller
             'competition_submitted_at' => now(),
         ]);
 
-        return redirect()->route('portal.dashboard')->with('success', 'تم رفع الصور والمعلومات بنجاح!');
+        return redirect()->route('portal.dashboard')->with('success', 'تم رفع الصورة والمعلومات بنجاح!');
     }
 }

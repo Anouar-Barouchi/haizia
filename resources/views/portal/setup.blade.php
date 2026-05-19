@@ -18,7 +18,7 @@
             <p class="text-gray-500 mt-2">أهلاً بك {{ $candidate->first_name }}! يرجى تعيين كلمة مرور لحسابك.</p>
         </div>
 
-        <form action="{{ route('portal.setup.save', $candidate->id) }}" method="POST">
+        <form action="{{ request()->fullUrl() }}" method="POST">
             @csrf
 
             <div class="mb-4">

@@ -6,7 +6,7 @@
     <title>شارة المشاركة - {{ $candidate->first_name }} {{ $candidate->last_name }}</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.11.11/html-to-image.min.js"></script>
     <style>
         body { 
             font-family: 'Cairo', sans-serif; 
@@ -92,7 +92,8 @@
         }
 
         .qr-container {
-            margin-top: 40px;
+            margin-top: auto;
+            margin-bottom: 20px;
             background: #ffffff;
             padding: 10px;
             border-radius: 12px;
@@ -104,9 +105,7 @@
         }
 
         .footer {
-            position: absolute;
-            bottom: 25px;
-            width: 100%;
+            margin-bottom: 20px;
             text-align: center;
             font-size: 14px;
             color: #f59e0b;
@@ -189,23 +188,25 @@
             
             // Allow fonts to fully load and rendering to complete
             setTimeout(() => {
-                html2canvas(badge, {
-                    scale: 3, // Higher scale for better quality image
-                    useCORS: true,
-                    allowTaint: true,
-                    backgroundColor: '#0f172a'
-                }).then(canvas => {
+                htmlToImage.toPng(badge, {
+                    pixelRatio: 3, // Higher scale for better quality image
+                    backgroundColor: '#0f172a',
+                    style: {
+                        transform: 'scale(1)',
+                        transformOrigin: 'top left'
+                    }
+                }).then(function (dataUrl) {
                     // Create download link
                     const link = document.createElement('a');
                     link.download = 'badge_{{ $candidate->first_name }}_{{ $candidate->last_name }}.png';
-                    link.href = canvas.toDataURL('image/png', 1.0);
+                    link.href = dataUrl;
                     link.click();
                     
                     // Restore button
                     btn.innerHTML = originalText;
                     btn.disabled = false;
-                }).catch(err => {
-                    console.error('Error generating image:', err);
+                }).catch(function (error) {
+                    console.error('Error generating image:', error);
                     alert('حدث خطأ أثناء إنشاء الصورة. يرجى المحاولة مرة أخرى.');
                     btn.innerHTML = originalText;
                     btn.disabled = false;
