@@ -142,7 +142,7 @@
         .badge-branding {
             margin-bottom: 3mm;
             text-align: center;
-            font-size: 7px;
+            font-size: 10px;
             color: #64748b;
             letter-spacing: 0.5px;
             direction: ltr;
