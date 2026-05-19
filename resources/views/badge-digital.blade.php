@@ -7,6 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.11.11/html-to-image.min.js"></script>
+    <link rel="preload" href="{{ asset('binhook/logoxxxhdpi.png') }}" as="image">
+    <link rel="preload" href="{{ asset('binhook/Asset 2xxxhdpi.png') }}" as="image">
     <style>
         body { 
             font-family: 'Cairo', sans-serif; 

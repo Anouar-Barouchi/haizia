@@ -6,6 +6,7 @@
     <title>تسجيل الدخول - مسابقة حيزية</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preload" href="{{ asset('binhook/logoxxxhdpi.png') }}" as="image">
     <style>
         body { font-family: 'Cairo', sans-serif; background-color: #f3f4f6; }
     </style>
