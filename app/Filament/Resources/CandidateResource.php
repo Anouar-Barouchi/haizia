@@ -229,6 +229,11 @@ class CandidateResource extends Resource
                         ->deselectRecordsAfterCompletion()
                         ->modalHeading('إرسال دعوات للمترشحين المحددين')
                         ->modalDescription('هل أنت متأكد أنك تريد إرسال الدعوات؟ (سيتم الإرسال فقط للمقبولين)'),
+                    Tables\Actions\BulkAction::make('generate_poster')
+                        ->label('إنشاء ملصق المترشحين')
+                        ->icon('heroicon-o-photo')
+                        ->color('success')
+                        ->action(fn (\Illuminate\Database\Eloquent\Collection $records) => redirect()->route('candidates.poster', ['ids' => $records->pluck('id')->join(',')])),
                 ]),
             ]);
     }
