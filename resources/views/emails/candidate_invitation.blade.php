@@ -210,10 +210,21 @@
                 <div class="message-box">
                     <p>
                         تهانينا! لقد تم قبول ترشيحك النهائي للمشاركة في مسابقة حيزية.<br>
-                        نرجو منك الاحتفاظ بشارة المشاركة الرسمية (PDF) المرفقة مع هذا البريد.
+                        نرجو منك تحميل شارة المشاركة الرسمية الخاصة بك عبر الرابط أدناه وإبرازها يوم الحدث.
                     </p>
                 </div>
                 
+                <div class="action-section" style="text-align: center; background-color: #f8fafc; border-color: #e2e8f0; border-width: 1px; border-style: solid;">
+                    <div class="action-title">شارة المشاركة الرسمية</div>
+                    <div class="action-desc">
+                        قم بعرض وتحميل شارتك كصورة عالية الجودة لمشاركتها مع أصدقائك أو الاحتفاظ بها في هاتفك.
+                    </div>
+                    
+                    <a href="{{ route('candidates.badge', ['code' => $candidate->code]) }}" class="btn" style="background-color: #f59e0b; color: #ffffff;">عرض وتحميل الشارة</a>
+                </div>
+                
+                <div class="divider"></div>
+
                 <div class="action-section">
                     <div class="action-title">بوابة المترشحين الخاصة بك</div>
                     <div class="action-desc">
@@ -230,7 +241,7 @@
                 <div class="divider"></div>
                 
                 <div class="qr-section">
-                    <p>يرجى إبراز الشارة المرفقة أو هذا الرمز السريع عند وصولك لنقطة الاستقبال</p>
+                    <p>يرجى إبراز شارتك الرقمية أو هذا الرمز السريع عند وصولك لنقطة الاستقبال</p>
                     <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data={{ urlencode(route('candidates.checkin', ['code' => $candidate->code])) }}" alt="QR Code" class="qr-code">
                 </div>
             </div>

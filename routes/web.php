@@ -39,6 +39,17 @@ Route::get('/candidates/poster', function (\Illuminate\Http\Request $request) {
     return view('candidates-poster', compact('candidates'));
 })->name('candidates.poster');
 
+Route::get('/badge/{code}', function ($code) {
+    $candidate = \App\Models\Candidate::where('code', $code)->firstOrFail();
+    return view('badge-digital', compact('candidate'));
+})->name('candidates.badge');
+
+Route::get('/admin/badges/print', function (\Illuminate\Http\Request $request) {
+    $ids = explode(',', $request->query('ids', ''));
+    $candidates = \App\Models\Candidate::whereIn('id', $ids)->get();
+    return view('admin.badges-print', compact('candidates'));
+})->name('admin.badges.print')->middleware('auth');
+
 // Candidate Portal Routes
 Route::prefix('portal')->name('portal.')->group(function () {
     // Setup (Signed URL)

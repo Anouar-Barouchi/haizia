@@ -256,24 +256,10 @@ class CandidateResource extends Resource
                         ->color('success')
                         ->action(fn (\Illuminate\Database\Eloquent\Collection $records) => redirect()->route('candidates.poster', ['ids' => $records->pluck('id')->join(',')])),
                     Tables\Actions\BulkAction::make('download_badges')
-                        ->label('تحميل شارات المترشحين')
-                        ->icon('heroicon-o-identification')
+                        ->label('طباعة شارات المترشحين')
+                        ->icon('heroicon-o-printer')
                         ->color('warning')
-                        ->action(function (\Illuminate\Database\Eloquent\Collection $records) {
-                            $pdf = \Mccarlosen\LaravelMpdf\Facades\LaravelMpdf::loadView('pdf.badges', ['candidates' => $records], [], [
-                                'mode' => 'utf-8',
-                                'format' => [106, 155], // B4 derived size 106x155 mm
-                                'margin_left' => 0,
-                                'margin_right' => 0,
-                                'margin_top' => 0,
-                                'margin_bottom' => 0,
-                                'margin_header' => 0,
-                                'margin_footer' => 0,
-                                'autoScriptToLang' => true,
-                                'autoLangToFont' => true,
-                            ]);
-                            return response()->streamDownload(fn () => print($pdf->output()), 'badges.pdf');
-                        }),
+                        ->action(fn (\Illuminate\Database\Eloquent\Collection $records) => redirect()->route('admin.badges.print', ['ids' => $records->pluck('id')->join(',')])),
                 ]),
             ]);
     }
