@@ -11,7 +11,6 @@
         body {
             margin: 0px;
             padding: 0px;
-            font-family: 'DejaVu Sans', sans-serif;
             background-color: #ffffff;
         }
         .page-break {
@@ -110,29 +109,20 @@
             <div class="header-bg"></div>
             
             <div class="content">
-                <!-- Fallback to original logo if it exists, use public_path for DOMPDF -->
+                <!-- Logo -->
                 @php
                     $logoPath = public_path('logo-original1.png');
                     if(!file_exists($logoPath)) $logoPath = public_path('logo-original.png');
-                    $logoBase64 = file_exists($logoPath) ? 'data:image/png;base64,' . base64_encode(file_get_contents($logoPath)) : '';
                 @endphp
-                @if($logoBase64)
-                    <img src="{{ $logoBase64 }}" class="logo" alt="Logo">
+                @if(file_exists($logoPath))
+                    <img src="{{ $logoPath }}" class="logo" alt="Logo">
                 @else
                     <div style="height: 25mm; margin-top: 5mm; font-size: 18px; font-weight: bold;">مسابقة حيزية</div>
                 @endif
 
                 <div class="profile-pic-container">
-                    @php
-                        $picPath = $candidate->profile_pic ? storage_path('app/public/' . $candidate->profile_pic) : null;
-                        $picBase64 = '';
-                        if ($picPath && file_exists($picPath)) {
-                            $mime = mime_content_type($picPath);
-                            $picBase64 = 'data:' . $mime . ';base64,' . base64_encode(file_get_contents($picPath));
-                        }
-                    @endphp
-                    @if($picBase64)
-                        <img src="{{ $picBase64 }}" class="profile-pic" alt="Profile">
+                    @if($candidate->profile_pic)
+                        <img src="{{ storage_path('app/public/' . $candidate->profile_pic) }}" class="profile-pic" alt="Profile">
                     @else
                         <!-- Simple placeholder -->
                         <div style="width: 35mm; height: 35mm; border-radius: 50%; border: 3px solid #f59e0b; background-color: #334155; display: inline-block;"></div>

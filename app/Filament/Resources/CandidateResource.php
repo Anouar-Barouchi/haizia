@@ -260,7 +260,18 @@ class CandidateResource extends Resource
                         ->icon('heroicon-o-identification')
                         ->color('warning')
                         ->action(function (\Illuminate\Database\Eloquent\Collection $records) {
-                            $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('pdf.badges', ['candidates' => $records]);
+                            $pdf = \Meneses\LaravelMpdf\Facades\LaravelMpdf::loadView('pdf.badges', ['candidates' => $records], [], [
+                                'mode' => 'utf-8',
+                                'format' => [106, 155], // B4 derived size 106x155 mm
+                                'margin_left' => 0,
+                                'margin_right' => 0,
+                                'margin_top' => 0,
+                                'margin_bottom' => 0,
+                                'margin_header' => 0,
+                                'margin_footer' => 0,
+                                'autoScriptToLang' => true,
+                                'autoLangToFont' => true,
+                            ]);
                             return response()->streamDownload(fn () => print($pdf->output()), 'badges.pdf');
                         }),
                 ]),
