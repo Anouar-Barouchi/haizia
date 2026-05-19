@@ -25,10 +25,11 @@
         }
         
         .badge-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 20px;
-            max-width: 21cm;
+            max-width: 22cm;
             margin: 0 auto;
         }
 
@@ -43,6 +44,8 @@
             border: 1px solid #ccc; /* Cut guide */
             box-sizing: border-box;
             page-break-inside: avoid;
+            break-inside: avoid;
+            margin-bottom: 20px;
         }
         
         .bg-pattern {
@@ -188,8 +191,8 @@
                 </div>
             </div>
             
-            @if($loop->iteration % 4 == 0 && !$loop->last)
-                </div><div class="page-break"></div><div class="badge-grid" style="background: white; padding: 10mm;">
+            @if(!$loop->last)
+                <!-- No explicit page break, letting the browser handle it -->
             @endif
         @endforeach
     </div>
