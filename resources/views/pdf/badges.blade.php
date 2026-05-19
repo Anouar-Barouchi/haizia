@@ -11,7 +11,7 @@
         body {
             margin: 0px;
             padding: 0px;
-            background-color: #ffffff;
+            background-color: #0f172a; /* Slate 900 */
         }
         .page-break {
             page-break-after: always;
@@ -20,22 +20,31 @@
             width: 106mm;
             height: 155mm;
             position: relative;
-            background: #1e1b4b; /* Deep blue background */
-            color: white;
+            background: #0f172a; 
+            color: #ffffff;
             text-align: center;
             overflow: hidden;
         }
         
-        /* Decorative top gradient */
-        .header-bg {
+        /* Premium subtle background element */
+        .bg-pattern {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 40mm;
-            background: #10b981; /* Emerald green */
-            border-bottom: 3px solid #f59e0b; /* Gold border */
+            height: 100%;
+            background: radial-gradient(circle at 50% 0%, #1e293b 0%, #0f172a 70%);
             z-index: 1;
+        }
+
+        .top-accent {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3mm;
+            background: #f59e0b; /* Premium Gold */
+            z-index: 2;
         }
 
         .content {
@@ -48,65 +57,69 @@
         }
 
         .logo {
-            margin-top: 5mm;
-            height: 25mm;
+            margin-top: 10mm;
+            height: 22mm;
             width: auto;
         }
 
         .profile-pic-container {
-            margin-top: 15mm;
+            margin-top: 12mm;
             text-align: center;
         }
 
         .profile-pic {
-            width: 35mm;
-            height: 35mm;
+            width: 38mm;
+            height: 38mm;
             border-radius: 50%;
-            border: 3px solid #f59e0b; /* Gold */
-            background-color: #fff;
+            border: 2px solid #f59e0b; /* Gold border */
+            background-color: #1e293b;
             object-fit: cover;
         }
 
         .name {
-            margin-top: 3mm;
-            font-size: 20px;
+            margin-top: 6mm;
+            font-size: 22px;
             font-weight: bold;
             color: #ffffff;
+            letter-spacing: 0.5px;
         }
 
         .membership {
-            margin-top: 1mm;
+            margin-top: 2mm;
             font-size: 14px;
-            color: #d1d5db;
+            color: #94a3b8; /* Slate 400 */
         }
 
         .qr-container {
-            margin-top: 8mm;
+            margin-top: 12mm;
             background: #ffffff;
-            padding: 2mm;
+            padding: 3mm;
             display: inline-block;
-            border-radius: 5px;
+            border-radius: 8px;
         }
 
         .qr-code {
-            width: 25mm;
-            height: 25mm;
+            width: 22mm;
+            height: 22mm;
         }
 
         .footer {
             position: absolute;
-            bottom: 5mm;
+            bottom: 6mm;
             width: 100%;
             text-align: center;
-            font-size: 12px;
-            color: #9ca3af;
+            font-size: 11px;
+            color: #f59e0b; /* Gold */
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
     </style>
 </head>
 <body>
     @foreach($candidates as $candidate)
         <div class="badge-container">
-            <div class="header-bg"></div>
+            <div class="bg-pattern"></div>
+            <div class="top-accent"></div>
             
             <div class="content">
                 <!-- Logo -->
@@ -117,7 +130,7 @@
                 @if(file_exists($logoPath))
                     <img src="{{ $logoPath }}" class="logo" alt="Logo">
                 @else
-                    <div style="height: 25mm; margin-top: 5mm; font-size: 18px; font-weight: bold;">مسابقة حيزية</div>
+                    <div style="height: 22mm; margin-top: 10mm; font-size: 20px; font-weight: bold; color: #f59e0b;">مسابقة حيزية</div>
                 @endif
 
                 <div class="profile-pic-container">
@@ -125,7 +138,7 @@
                         <img src="{{ storage_path('app/public/' . $candidate->profile_pic) }}" class="profile-pic" alt="Profile">
                     @else
                         <!-- Simple placeholder -->
-                        <div style="width: 35mm; height: 35mm; border-radius: 50%; border: 3px solid #f59e0b; background-color: #334155; display: inline-block;"></div>
+                        <div style="width: 38mm; height: 38mm; border-radius: 50%; border: 2px solid #f59e0b; background-color: #1e293b; display: inline-block;"></div>
                     @endif
                 </div>
 
