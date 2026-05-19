@@ -54,7 +54,7 @@ class CandidateInvitationMail extends Mailable
      */
     public function attachments(): array
     {
-        $pdf = \Meneses\LaravelMpdf\Facades\LaravelMpdf::loadView('pdf.badges', ['candidates' => [$this->candidate]], [], [
+        $pdf = \Mccarlosen\LaravelMpdf\Facades\LaravelMpdf::loadView('pdf.badges', ['candidates' => [$this->candidate]], [], [
             'mode' => 'utf-8',
             'format' => [106, 155], // B4 derived size 106x155 mm
             'margin_left' => 0,
