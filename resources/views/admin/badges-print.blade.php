@@ -200,7 +200,7 @@
                         شارة مشاركة رسمية
                     </div>
                     <div class="badge-branding">
-                        Powered by binhook
+                        Powered by BinHook
                     </div>
                 </div>
             </div>
