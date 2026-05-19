@@ -79,6 +79,9 @@
             width: 100%;
             height: 100%;
             z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .logo {
@@ -89,7 +92,6 @@
 
         .profile-pic-container {
             margin-top: 10mm;
-            text-align: center;
         }
 
         .profile-pic {
@@ -116,10 +118,10 @@
         }
 
         .qr-container {
-            margin-top: 10mm;
+            margin-top: auto;
+            margin-bottom: 15mm;
             background: #ffffff;
             padding: 3mm;
-            display: inline-block;
             border-radius: 8px;
         }
 
@@ -129,9 +131,7 @@
         }
 
         .footer {
-            position: absolute;
-            bottom: 6mm;
-            width: 100%;
+            margin-bottom: 6mm;
             text-align: center;
             font-size: 11px;
             color: #f59e0b;
