@@ -161,5 +161,10 @@
         
     </div>
 
+    <div style="text-align: center; margin-top: 30px; margin-bottom: 30px; direction: ltr;">
+        <span style="color: #94a3b8; font-size: 0.875rem; vertical-align: middle;">Powered by</span>
+        <img src="{{ asset('binhook/logoxxxhdpi.png') }}" alt="Binhook" style="height: 18px; vertical-align: middle; margin-left: 6px;">
+    </div>
+
 </body>
 </html>

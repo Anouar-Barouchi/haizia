@@ -10,7 +10,7 @@
         body { font-family: 'Cairo', sans-serif; background-color: #f3f4f6; }
     </style>
 </head>
-<body class="flex items-center justify-center min-h-screen">
+<body class="flex flex-col items-center justify-center min-h-screen">
 
     <div class="bg-white p-8 rounded-xl shadow-lg max-w-md w-full">
         <div class="text-center mb-8">
@@ -53,6 +53,11 @@
                 حفظ ودخول
             </button>
         </form>
+    </div>
+    
+    <div class="mt-8 flex items-center justify-center w-full pb-8" dir="ltr">
+        <span class="text-gray-400 text-sm">Powered by</span>
+        <img src="{{ asset('binhook/logoxxxhdpi.png') }}" alt="Binhook" class="h-5 ml-2">
     </div>
 
 </body>

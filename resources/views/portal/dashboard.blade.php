@@ -10,7 +10,7 @@
         body { font-family: 'Cairo', sans-serif; background-color: #f8fafc; }
     </style>
 </head>
-<body>
+<body class="flex flex-col min-h-screen font-[Cairo] bg-slate-50">
 
     <nav class="bg-white shadow">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -130,6 +130,13 @@
         @endif
 
     </div>
+    
+    <footer class="mt-auto py-8 w-full">
+        <div class="flex items-center justify-center" dir="ltr">
+            <span class="text-gray-400 text-sm">Powered by</span>
+            <img src="{{ asset('binhook/logoxxxhdpi.png') }}" alt="Binhook" class="h-5 ml-2">
+        </div>
+    </footer>
 
 </body>
 </html>

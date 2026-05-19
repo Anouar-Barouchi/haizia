@@ -247,7 +247,11 @@
             </div>
             
             <div class="footer">
-                جميع الحقوق محفوظة لمسابقة حيزية &copy; {{ date('Y') }}
+                جميع الحقوق محفوظة لمسابقة حيزية &copy; {{ date('Y') }}<br>
+                <div style="margin-top: 15px; direction: ltr; text-align: center;">
+                    <span style="color: #94a3b8; font-size: 13px; vertical-align: middle;">Powered by</span>
+                    <img src="{{ asset('binhook/logoxxxhdpi.png') }}" alt="Binhook" style="height: 18px; vertical-align: middle; margin-left: 6px;">
+                </div>
             </div>
         </div>
     </div>
