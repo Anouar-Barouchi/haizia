@@ -47,18 +47,18 @@
             height: 100%;
             display: flex;
             flex-direction: column;
-            padding: 60px 80px;
+            padding: 40px 60px;
         }
 
         .poster-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 50px;
+            margin-bottom: 20px;
         }
 
         .poster-logo {
-            height: 120px;
+            height: 90px;
             object-fit: contain;
             filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
         }
@@ -68,7 +68,7 @@
         }
 
         .poster-title {
-            font-size: 3.5rem;
+            font-size: 2.5rem;
             font-weight: 800;
             line-height: 1.2;
             background: linear-gradient(to left, #fef08a, #f59e0b);
@@ -79,16 +79,16 @@
         }
 
         .poster-subtitle {
-            font-size: 1.8rem;
+            font-size: 1.2rem;
             color: #d1d5db;
             font-weight: 600;
-            margin-top: 10px;
+            margin-top: 5px;
         }
 
         .candidates-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 30px 20px;
+            gap: 15px 15px;
             flex-grow: 1;
             align-content: center;
         }
@@ -98,16 +98,19 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
+            max-width: 100%;
+            overflow: hidden;
         }
 
         .candidate-image-wrapper {
-            width: 140px;
-            height: 140px;
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
             padding: 4px;
             background: linear-gradient(135deg, #fef08a, #f59e0b);
-            margin-bottom: 15px;
+            margin-bottom: 8px;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            flex-shrink: 0;
         }
 
         .candidate-image {
@@ -127,26 +130,32 @@
         }
 
         .candidate-placeholder svg {
-            width: 64px;
-            height: 64px;
+            width: 48px;
+            height: 48px;
         }
 
         .candidate-name {
-            font-size: 1.25rem;
+            font-size: 1rem;
             font-weight: 700;
             color: #f8fafc;
             line-height: 1.3;
-            max-width: 100%;
+            width: 100%;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
             text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            padding: 0 10px;
+            box-sizing: border-box;
         }
 
         .candidate-membership {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: #94a3b8;
-            margin-top: 4px;
+            margin-top: 2px;
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
     </style>
 </head>
@@ -159,7 +168,7 @@
             <div class="poster-header">
                 <div class="poster-title-container">
                     <h1 class="poster-title">المترشحون لمسابقة</h1>
-                    <h1 class="poster-title" style="font-size: 4.5rem; margin-top: -10px;">حيزية</h1>
+                    <h1 class="poster-title" style="font-size: 3.5rem; margin-top: -5px;">حيزية</h1>
                     <div class="poster-subtitle">القائمة الرسمية</div>
                 </div>
                 <img src="{{ asset('logo-original.png') }}" alt="Haizia Logo" class="poster-logo">
