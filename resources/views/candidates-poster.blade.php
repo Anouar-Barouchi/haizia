@@ -59,16 +59,19 @@
 
         .poster-logo {
             height: 90px;
+            width: 150px;
             object-fit: contain;
             filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
         }
 
         .poster-title-container {
-            text-align: left;
+            text-align: center;
+            flex-grow: 1;
+            padding: 0 20px;
         }
 
         .poster-title {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             font-weight: 800;
             line-height: 1.2;
             background: linear-gradient(to left, #fef08a, #f59e0b);
@@ -166,12 +169,12 @@
         
         <div class="poster-content">
             <div class="poster-header">
+                <img src="{{ asset('logo-original1.png') }}" alt="Haizia Logo 1" class="poster-logo">
                 <div class="poster-title-container">
-                    <h1 class="poster-title">المترشحون لمسابقة</h1>
-                    <h1 class="poster-title" style="font-size: 3.5rem; margin-top: -5px;">حيزية</h1>
+                    <h1 class="poster-title">المترشحون لمسابقة حيزية</h1>
                     <div class="poster-subtitle">القائمة الرسمية</div>
                 </div>
-                <img src="{{ asset('logo-original.png') }}" alt="Haizia Logo" class="poster-logo">
+                <img src="{{ asset('logo-original.png') }}" alt="Haizia Logo 2" class="poster-logo">
             </div>
 
             <div class="candidates-grid">
