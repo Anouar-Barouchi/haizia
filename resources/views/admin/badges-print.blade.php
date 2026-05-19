@@ -131,12 +131,23 @@
         }
 
         .footer {
-            margin-bottom: 6mm;
+            margin-bottom: 2mm;
             text-align: center;
             font-size: 11px;
             color: #f59e0b;
             font-weight: 700;
             letter-spacing: 1px;
+        }
+
+        .badge-branding {
+            margin-bottom: 3mm;
+            text-align: center;
+            font-size: 7px;
+            color: #64748b;
+            letter-spacing: 0.5px;
+            direction: ltr;
+            -webkit-print-color-adjust: exact;
+            color-adjust: exact;
         }
     </style>
 </head>
@@ -187,6 +198,9 @@
 
                     <div class="footer">
                         شارة مشاركة رسمية
+                    </div>
+                    <div class="badge-branding">
+                        Powered by binhook
                     </div>
                 </div>
             </div>
