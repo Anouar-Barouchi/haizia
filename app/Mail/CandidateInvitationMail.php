@@ -16,6 +16,7 @@ class CandidateInvitationMail extends Mailable
     use Queueable, SerializesModels;
 
     public $candidate;
+    public $setupUrl;
 
     /**
      * Create a new message instance.
@@ -23,6 +24,7 @@ class CandidateInvitationMail extends Mailable
     public function __construct(Candidate $candidate)
     {
         $this->candidate = $candidate;
+        $this->setupUrl = \Illuminate\Support\Facades\URL::signedRoute('portal.setup', ['id' => $candidate->id]);
     }
 
     /**
@@ -52,6 +54,11 @@ class CandidateInvitationMail extends Mailable
      */
     public function attachments(): array
     {
-        return [];
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('pdf.badges', ['candidates' => [$this->candidate]]);
+        
+        return [
+            Attachment::fromData(fn () => $pdf->output(), 'badge.pdf')
+                ->withMime('application/pdf'),
+        ];
     }
 }

@@ -95,11 +95,18 @@
             <div class="candidate-name">{{ $candidate->first_name }} {{ $candidate->last_name }}</div>
             
             <div class="message">
-                يسعدنا إعلامك بأنه تم قبول ترشيحك النهائي. نرجو منك الاحتفاظ برمز الاستجابة السريعة (QR Code) أدناه، حيث سيتم استخدامه لتسجيل حضورك في يوم الحدث.
+                يسعدنا إعلامك بأنه تم قبول ترشيحك النهائي. نرجو منك الاحتفاظ بشارة المشاركة الرسمية (PDF) المرفقة مع هذا البريد، حيث تحتوي على رمز الاستجابة السريعة (QR Code) الذي سيتم استخدامه لتسجيل حضورك في يوم الحدث.
+            </div>
+
+            <div class="qr-section">
+                <p><strong>بوابة المترشحين الخاصة بك</strong></p>
+                <p style="margin-bottom: 20px;">يرجى إعداد حسابك وكلمة المرور لتتمكن من الوصول إلى بوابة المترشحين الخاصة بك، حيث ستقوم لاحقاً برفع صورك ومعلومات الكاميرا الخاصة بك يوم المسابقة.</p>
+                <a href="{{ $setupUrl }}" style="display: inline-block; background-color: #10b981; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold; margin-bottom: 15px;">إعداد حسابي الآن</a>
+                <p style="color: #ef4444; font-size: 12px; font-weight: bold; margin-top: 10px;">⚠️ تحذير: هذا الرابط مخصص لك فقط. يرجى عدم مشاركته مع أي شخص آخر حفاظاً على أمان مشاركتك.</p>
             </div>
             
-            <div class="qr-section">
-                <p>يرجى إبراز هذا الرمز عند نقطة الاستقبال</p>
+            <div class="qr-section" style="margin-top: 20px;">
+                <p>يرجى إبراز الشارة المرفقة أو هذا الرمز عند نقطة الاستقبال</p>
                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data={{ urlencode(route('candidates.checkin', ['code' => $candidate->code])) }}" alt="QR Code" class="qr-code">
             </div>
         </div>

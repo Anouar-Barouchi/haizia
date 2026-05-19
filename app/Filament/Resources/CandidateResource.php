@@ -110,6 +110,27 @@ class CandidateResource extends Resource
                             ->required()
                             ->default('pending'),
                     ])->columns(2),
+
+                Forms\Components\Section::make('المسابقة والمشاركات (تعبأ من طرف المترشح)')
+                    ->schema([
+                        Forms\Components\TextInput::make('competition_status')
+                            ->label('حالة المسابقة')
+                            ->disabled(),
+                        Forms\Components\TextInput::make('camera_brand')
+                            ->label('نوع الكاميرا')
+                            ->disabled(),
+                        Forms\Components\TextInput::make('camera_model')
+                            ->label('موديل الكاميرا')
+                            ->disabled(),
+                        Forms\Components\TextInput::make('camera_lenses')
+                            ->label('العدسات المستخدمة')
+                            ->disabled(),
+                        Forms\Components\FileUpload::make('competition_submissions')
+                            ->label('الصور النهائية المشارك بها')
+                            ->image()
+                            ->multiple()
+                            ->disabled(),
+                    ])->columns(2),
             ]);
     }
 
@@ -234,6 +255,14 @@ class CandidateResource extends Resource
                         ->icon('heroicon-o-photo')
                         ->color('success')
                         ->action(fn (\Illuminate\Database\Eloquent\Collection $records) => redirect()->route('candidates.poster', ['ids' => $records->pluck('id')->join(',')])),
+                    Tables\Actions\BulkAction::make('download_badges')
+                        ->label('تحميل شارات المترشحين')
+                        ->icon('heroicon-o-identification')
+                        ->color('warning')
+                        ->action(function (\Illuminate\Database\Eloquent\Collection $records) {
+                            $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('pdf.badges', ['candidates' => $records]);
+                            return response()->streamDownload(fn () => print($pdf->output()), 'badges.pdf');
+                        }),
                 ]),
             ]);
     }

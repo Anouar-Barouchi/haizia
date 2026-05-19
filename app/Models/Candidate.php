@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Candidate extends Model
+class Candidate extends Authenticatable
 {
     protected $fillable = [
         'first_name',
@@ -23,6 +23,18 @@ class Candidate extends Model
         'awards_list',
         'status',
         'code',
+        'password',
+        'competition_status',
+        'competition_started_at',
+        'competition_submitted_at',
+        'camera_brand',
+        'camera_model',
+        'camera_lenses',
+        'competition_submissions',
+    ];
+
+    protected $hidden = [
+        'password',
     ];
 
     protected static function booted()
@@ -38,5 +50,8 @@ class Candidate extends Model
         'gallery' => 'array',
         'has_experience' => 'boolean',
         'has_awards' => 'boolean',
+        'competition_submissions' => 'array',
+        'competition_started_at' => 'datetime',
+        'competition_submitted_at' => 'datetime',
     ];
 }
